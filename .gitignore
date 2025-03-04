@@ -1,0 +1,8 @@
+.idea/
+
+logs/
+logs/*.log
+debug.log
+
+screenshots/
+screenshots/*.png
