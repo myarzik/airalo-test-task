@@ -1,6 +1,8 @@
-selenium
-webdriver-manager
-pytest
+selenium~=4.29.0
+webdriver-manager~=4.0.2
+pytest~=8.3.5
 pytest-xdist
-pytest-bdd
-loguru
+pytest-bdd~=8.1.0
+loguru~=0.7.3
+allure-python-commons~=2.13.5
+requests~=2.32.3

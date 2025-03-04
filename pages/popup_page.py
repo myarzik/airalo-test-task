@@ -3,7 +3,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from pages.base_page import BasePage
 
 class PopupPage(BasePage):
-    """ 🔥 Проверяет содержимое попапа с деталями eSIM """
+    """ Represents the popup containing eSIM details """
 
     LOCATORS = {
         'POPUP': (By.XPATH, '//div[@data-testid="package-detail"]'),
@@ -15,17 +15,13 @@ class PopupPage(BasePage):
         'PRICE': (By.XPATH, '//div[@data-testid="package-detail"]//p[@data-testid="PRICE-value"]'),
     }
 
-    from selenium.webdriver.support import expected_conditions as EC
-
     def get_text_from_locator(self, key):
-        """ 🔥 Получает текст элемента по ключу """
+        """ Retrieves text from an element by its key """
         if key not in self.LOCATORS:
-            raise ValueError(f'❌ Локатор {key} не найден!')
+            raise ValueError(f'Error: Locator {key} not found!')
 
-        self.wait_for_element(self.LOCATORS['POPUP'])  # Ждём попап
-        self.wait_for_element(self.LOCATORS['SELECTED_SIM'])  # Ждём данные eSIM
-
-        # Ожидаем, пока текст элемента появится
+        self.wait_for_element(self.LOCATORS['POPUP'])
+        self.wait_for_element(self.LOCATORS['SELECTED_SIM'])
         self.wait.until(EC.text_to_be_present_in_element(self.LOCATORS[key], ''))
 
-        return self.get_text(self.LOCATORS[key])  # Используем `get_text()` из `BasePage`
+        return self.get_text(self.LOCATORS[key])
