@@ -1,0 +1,11 @@
+version: '3'
+services:
+  tests:
+    build: .
+    container_name: airalo_tests
+    volumes:
+      - ./allure-results:/app/allure-results  # Save Allure reports locally
+    environment:
+      CLIENT_ID: "your_real_client_id"
+      CLIENT_SECRET: "your_real_client_secret"
+    command: ["pytest", "steps/", "--alluredir=allure-results"]
